@@ -12,27 +12,25 @@ import {
 
 const Add = ({navigation}) => {
   const context = React.useContext(AppContext);
-  const [task,setTask] = useState([]);
+  const [task,setTask] = useState('');
   const [dynamicDate, setDynamicDate] = useState(new Date());
-  const getMessage = () => {
-    return context.tasks.length > 0 ? "Add another task" : "Add your first task";
-  }
   
-
   return (
     <View style={styles.screen}>
       <Text style = {styles.header}>Task</Text>
       <View style={styles.inputContainer}>
         <TextInput
-          placeholder={getMessage()}
+          placeholder={context.getMessage()}
           style={styles.input}
           onChangeText={setTask}
           value={task}
+          multiline={true}
+          editable={true}
         />
       </View>
       <DateSelector setDynamicDate={setDynamicDate}/>
-      {task.length > 0 && <Button title="Add" onPress={() => { context.addTask(task,dynamicDate); navigation.goBack() } } />}
-      <Button title="Cancel" onPress={() => navigation.goBack() } />
+      {task.length > 0 && <Button color= "#4267B2" title="Add" onPress={() => { context.addTask(task,dynamicDate); navigation.goBack() } } />}
+      <Button color = "red" title="Cancel" onPress={() => navigation.goBack() } />
     </View>
   );
 

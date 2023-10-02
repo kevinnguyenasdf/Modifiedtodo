@@ -16,13 +16,13 @@ const DateSelector = ({setDynamicDate}) =>{
     const newDate = new Date(currentDate);
     newDate.setDate(currentDate.getDate()+1);
     setCurrentDate(newDate);
-    setDynamicDate(currentDate);
+    setDynamicDate(newDate);
   };
   const decrementDate = () => {
     const newDate = new Date(currentDate);
     newDate.setDate(currentDate.getDate()-1);
     setCurrentDate(newDate);
-    setDynamicDate(currentDate);
+    setDynamicDate(newDate);
   };
 
   const formattedDate = String(currentDate.getMonth()+1) + "-" + String(currentDate.getDate()) + "-" + String(currentDate.getFullYear());
